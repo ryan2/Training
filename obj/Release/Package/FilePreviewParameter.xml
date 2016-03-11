@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/MyApp" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\ryan\.ricks\\Documents\\Visual\ Studio\ 2015\\Projects\\Training4\\Training4\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\ryan\.ricks\\Documents\\Visual\ Studio\ 2015\\Projects\\Training4\\Training4\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="ApplicationDbContext-Web.config Connection String" description="" value="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=ApplicationDbContext-20160205125104; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|ApplicationDbContext-20160205125104.mdf" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\ryan\.ricks\\Documents\\Visual\ Studio\ 2015\\Projects\\Training4\\Training4\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ApplicationDbContext']/@connectionString" />
+  </parameter>
+</parameters>
