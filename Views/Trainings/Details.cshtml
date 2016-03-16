@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Course)
+            Course Title
         </dt>
 
         <dd>
@@ -59,7 +59,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Time)
+            Duration
         </dt>
 
         <dd>
@@ -123,25 +123,18 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Review)
+            Written Review
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Review)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Recommend)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Recommend)
-        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>
 

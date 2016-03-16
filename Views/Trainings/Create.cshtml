@@ -1,10 +1,10 @@
 ﻿@model Training4.Models.Training
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Write a Review";
 }
 
-<h2>Create</h2>
+<h2>Write a Review</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Training</h4>
+        <h4></h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -54,7 +54,7 @@
         </div>
 
         <div class="form-group">
-            @{ x = "Training Name";}
+            @{ x = "Course Title";}
             @Html.LabelFor(model => model.Course,x, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Course, new { htmlAttributes = new { @class = "form-control" } })
@@ -74,7 +74,7 @@
         </div>
 
         <div class="form-group">
-            @{ x = "Number of Days/House";}
+            @{ x = "Duration";}
             @Html.LabelFor(model => model.Time,x, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
@@ -154,16 +154,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @{x = "Would you recommend it to other ASPE employees?";}
-            @Html.LabelFor(model => model.Recommend,x, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Recommend)
-                    @Html.ValidationMessageFor(model => model.Recommend, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

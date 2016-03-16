@@ -17,7 +17,7 @@ namespace Training4.Controllers
         // GET: Trainings
         public ActionResult Index(string trainingRating, string searchString)
         {
-            var RatingList = new List<Decimal>(5) { 1, 2, 3, 4, 5 };
+            var RatingList = new List<Decimal>(5) { 5, 4, 3, 2, 1 };
             var RatingQry = from d in db.Trainings
                             orderby d.Stars
                             select d.Stars;
@@ -36,6 +36,7 @@ namespace Training4.Controllers
                 decimal y = Decimal.Parse(trainingRating);
                 trainings = trainings.Where(x => x.Stars == y);
             }
+            trainings = trainings.OrderByDescending(t => t.Stars);
             return View(trainings.ToList());
         }
 

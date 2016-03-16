@@ -58,3 +58,4 @@ C:\Users\ryan.ricks\documents\visual studio 2015\Projects\Training4\Training4\ob
 C:\Users\ryan.ricks\documents\visual studio 2015\Projects\Training4\Training4\obj\Release\Training4.csproj.GenerateResource.Cache
 C:\Users\ryan.ricks\documents\visual studio 2015\Projects\Training4\Training4\obj\Release\Training4.dll
 C:\Users\ryan.ricks\documents\visual studio 2015\Projects\Training4\Training4\obj\Release\Training4.pdb
+C:\Users\ryan.ricks\Documents\Visual Studio 2015\Projects\Training4\Training4\obj\Release\Training4.Migrations._null.resources

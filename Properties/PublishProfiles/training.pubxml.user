@@ -112,7 +112,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2016 11:24:26</publishTime>
     </File>
     <File Include="bin/Training4.dll">
-      <publishTime>03/01/2016 16:08:18</publishTime>
+      <publishTime>03/15/2016 17:17:52</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>02/05/2016 11:24:26</publishTime>
@@ -208,22 +208,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2016 11:24:27</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/08/2016 11:10:13</publishTime>
+      <publishTime>03/15/2016 14:54:13</publishTime>
     </File>
     <File Include="Views/Trainings/Create.cshtml">
-      <publishTime>02/12/2016 16:53:28</publishTime>
+      <publishTime>03/15/2016 15:02:05</publishTime>
     </File>
     <File Include="Views/Trainings/Delete.cshtml">
       <publishTime>02/05/2016 13:03:23</publishTime>
     </File>
     <File Include="Views/Trainings/Details.cshtml">
-      <publishTime>02/12/2016 15:11:33</publishTime>
+      <publishTime>03/15/2016 15:05:30</publishTime>
     </File>
     <File Include="Views/Trainings/Edit.cshtml">
       <publishTime>02/12/2016 16:45:07</publishTime>
     </File>
     <File Include="Views/Trainings/Index.cshtml">
-      <publishTime>02/16/2016 16:55:46</publishTime>
+      <publishTime>03/15/2016 15:33:31</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/05/2016 11:24:20</publishTime>
@@ -232,7 +232,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2016 11:24:20</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/01/2016 16:05:50</publishTime>
+      <publishTime>03/15/2016 16:38:14</publishTime>
     </File>
   </ItemGroup>
 </Project>

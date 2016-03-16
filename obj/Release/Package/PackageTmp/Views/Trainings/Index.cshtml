@@ -4,88 +4,50 @@
     ViewBag.Title = "Index";
 }
 
-<h2>All Reviews</h2>
+<h2></h2>
 
 <!-- <a class="btn btn-primary btn-lg" href="/Trainings/Create">
    New Training Review
 </a> -->
 <p>
-    @Html.ActionLink("New Training Review", "Create",null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Write a Review", "Create",null, new { @class = "btn btn-primary btn-lg" })
 
     @using (Html.BeginForm())
     {
         <p>
         Rating: @Html.DropDownList("trainingRating","All")
-        Course: @Html.TextBox("SearchString", null, new {  })<br />
+        Topic/Course: @Html.TextBox("SearchString", null, new {  })
         <input type="submit" value="Search" class="btn"/>
         </p>
     }
-<table class="table table-striped sortable">
+<table class="table table-striped sortable table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Office)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Role)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.Stars)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Topic)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Course)
+            Course Title
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Format)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Url)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CEU)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contractor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Instructor)
+            @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Location)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stars)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Review)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Recommend)
-        </th>
-        <th class="sorttable_nosort" style="min-width:150px"></th>
+        <th class="sorttable_nosort"></th>
     </tr>
 
 @foreach (var item in Model)
 {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Office)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Role)
-        </td>
-        <td>
-            @{ string date = item.Date.ToShortDateString();}
-            @Html.DisplayFor(modelItem => date)
-            
+            @Html.DisplayFor(modelItem => item.Stars)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Topic)
@@ -97,42 +59,24 @@
             @Html.DisplayFor(modelItem => item.Format)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Url)
-        </td>
-        <td>
-            @{ string price = "$"+item.Price.ToString();}
-            @Html.DisplayFor(modelItem => price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CEU)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contractor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Instructor)
+            @{string date = "";
+            }
+            @{if (item.Date != null)
+                {
+                    DateTime d = (DateTime)item.Date;
+                    date = d.ToShortDateString();
+                }
+            }
+            @Html.DisplayFor(modelItem => date)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Location)
         </td>
         <td>
-            
-                @Html.DisplayFor(modelItem => item.Stars)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Review)
-        </td>
-        @{ int x = item.Recommend ? 1:0;}
-        <td sorttable_customkey=@x>
-            @Html.DisplayFor(modelItem => item.Recommend)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) 
+            @*
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
         </td>
     </tr>
 }
