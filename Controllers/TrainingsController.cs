@@ -70,6 +70,10 @@ namespace Training4.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (training.Date == null)
+                {
+                    training.Date = DateTime.Today;
+                }
                 db.Trainings.Add(training);
                 db.SaveChanges();
                 return RedirectToAction("Index");
