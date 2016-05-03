@@ -83,7 +83,14 @@
             @Html.DisplayFor(modelItem => item.Role)
         </td>
         <td>
-            @{ string date = item.Date.ToShortDateString();}
+            @{string date = "";
+            }
+            @{if (item.Date != null)
+                {
+                    DateTime d = (DateTime)item.Date;
+                    date = d.ToShortDateString();
+                }
+            }
             @Html.DisplayFor(modelItem => date)
             
         </td>

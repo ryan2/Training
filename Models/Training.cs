@@ -10,14 +10,14 @@ namespace Training4.Models
         public int ID { get; set; }
         public string Office { get; set; }
         public string Role { get; set; }
-        public DateTime Date { get; set; }
+        public Nullable<DateTime> Date { get; set; }
         public string Topic { get; set; }
         public string Course { get; set; }
         public string Format { get; set; }
         public string Time { get; set; }
         public string Url { get; set; }
-        public decimal Price { get; set; }
-        public decimal CEU { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<decimal> CEU { get; set; }
         public string Contractor { get; set; }
         public string Instructor { get; set; }
         public string Location { get; set; }

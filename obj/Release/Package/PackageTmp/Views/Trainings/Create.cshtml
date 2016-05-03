@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            @{ x = "Date of Course (M/D/Y)";}
+            @{ x = "Date of Course (M/D/YYYY)";}
             @Html.LabelFor(model => model.Date,x, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })

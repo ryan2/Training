@@ -14,6 +14,30 @@ namespace Training4.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult Index1(string trainingRating, string searchString)
+        {
+            var RatingList = new List<Decimal>(5) { 1, 2, 3, 4, 5 };
+            var RatingQry = from d in db.Trainings
+                            orderby d.Stars
+                            select d.Stars;
+            ViewBag.trainingRating = new SelectList(RatingList);
+
+
+
+            var trainings = from t in db.Trainings
+                            select t;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                trainings = trainings.Where(s => s.Course.Contains(searchString) || s.Topic.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(trainingRating))
+            {
+                decimal y = Decimal.Parse(trainingRating);
+                trainings = trainings.Where(x => x.Stars == y);
+            }
+            return View(trainings.ToList());
+        }
+
         // GET: Trainings
         public ActionResult Index(string trainingRating, string searchString)
         {
@@ -72,6 +96,24 @@ namespace Training4.Controllers
                 db.Trainings.Add(training);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+
+            return View(training);
+        }
+        public ActionResult Create1()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create1([Bind(Include = "ID,Office,Role,Date,Topic,Course,Format,Time,Url,Price,CEU,Contractor,Location,Instructor,Stars,Review,Recommend")] Training training)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Trainings.Add(training);
+                db.SaveChanges();
+                return RedirectToAction("Index1");
             }
 
             return View(training);

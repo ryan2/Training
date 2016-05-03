@@ -1,0 +1,315 @@
+﻿<!DOCTYPE HTML>
+<!--@*
+	Striped by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license) *@
+-->
+<html>
+	<head>
+        @model IEnumerable<Training4.Models.Training>
+        @{
+            Layout = null;
+            System.Globalization.DateTimeFormatInfo mfi = new System.Globalization.DateTimeFormatInfo();
+        }
+		<title>Training Reviews</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="~/Content/striped/assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Content -->
+			<div id="content">
+				<div class="inner">
+
+					<!-- Post -->
+						<article class="box post post-excerpt">
+							<header>
+								<!--
+									Note: Titles and subtitles will wrap automatically when necessary, so don't worry
+									if they get too long. You can also remove the <p> entirely if you don't
+									need a subtitle.
+								-->
+                                @{ var item = Model.ElementAt(0);}
+								<h2><a href="#">@item.Topic</a></h2>
+								<p>@item.Course</p>
+                                <p>@item.Location</p>
+							</header>
+							<div class="info">
+								<!--
+									Note: The date should be formatted exactly as it's shown below. In particular, the
+									"least significant" characters of the month should be encapsulated in a <span>
+									element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
+									Oh, and if you don't need a date for a particular page or post you can simply delete
+									the entire "date" element.
+
+								-->
+                                @{ string day = "";
+                                    string year = "";
+                                    if (item.Date!=null)
+                                    {
+                                        DateTime d = (DateTime)item.Date;
+                                        day = d.Day.ToString();
+                                        year = d.Year.ToString();
+                                    }
+                                        }
+								<span class="date"><span class="month">Jul<span>y</span></span> <span class="day">@day</span><span class="year">, @year</span></span>
+								<!--
+									Note: You can change the number of list items in "stats" to whatever you want.
+								-->
+								<ul class="stats">
+                                    @{ int star = (int)item.Stars;
+                                        int max = 5;
+                                        }
+                                    @while (star-- > 0)
+                                            {
+                                                max--;
+                                    <li style="margin-top:0px; margin-bottom:0px" class="icon fa-star"></li>
+                                    }
+                                    @while (max-- > 0)
+                                    {
+                                        <li style="margin-top:0px; margin-bottom:0px" class="icon fa-star-o"></li>
+                                    }
+								</ul>
+                                <p class="stats">@item.Url</p>
+                                <br />
+                                <p style="display:inline">Office: @item.Office</p>
+                                <p class="stats">Role: @item.Role</p>
+                                <p class="stats">Format: @item.Format</p>
+                                <p class="stats">Duration: @item.Time</p>
+                                <p class="stats">CEUs: @item.CEU</p>
+                                <p class="stats">Contractor: @item.Contractor</p>
+                                <p class="stats">Instructor: @item.Instructor</p>
+							</div>
+							<!--<a href="#" class="image featured"><img src="~/Content/striped/images/pic01.jpg" alt="" /></a>-->
+							<p>
+								<b>Comments:</b> @item.Review
+							</p>
+						</article>
+                    <br />
+
+					<!-- Post -->
+                    <article class="box post post-excerpt">
+                        <header>
+                            <!--
+                Note: Titles and subtitles will wrap automatically when necessary, so don't worry
+                if they get too long. You can also remove the <p> entirely if you don't
+                need a subtitle.
+            -->
+                            @{ item = Model.ElementAt(1);}
+                            <h2><a href="#">@item.Topic</a></h2>
+                            <p>@item.Course</p>
+                            <p>@item.Location</p>
+                        </header>
+                        <div class="info">
+                            <!--
+            Note: The date should be formatted exactly as it's shown below. In particular, the
+            "least significant" characters of the month should be encapsulated in a <span>
+            element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
+            Oh, and if you don't need a date for a particular page or post you can simply delete
+            the entire "date" element.
+
+        -->
+                            @{  day = "";
+                                year = "";
+                                if (item.Date != null)
+                                {
+                                    DateTime d = (DateTime)item.Date;
+                                    day = d.Day.ToString();
+                                    year = d.Year.ToString();
+                                }
+                            }
+                            <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">@day</span><span class="year">, @year</span></span>
+                            <!--
+            Note: You can change the number of list items in "stats" to whatever you want.
+        -->
+                            <ul class="stats">
+                                @{ star = (int)item.Stars;
+                                    max = 5;
+                                }
+                                @while (star-- > 0)
+                                {
+                                    max--;
+                                    <li style="margin-top:0px; margin-bottom:0px" class="icon fa-star"></li>
+                                }
+                                @while (max-- > 0)
+                                {
+                                    <li style="margin-top:0px; margin-bottom:0px" class="icon fa-star-o"></li>
+                                }
+                            </ul>
+                            <p class="stats">@item.Url</p>
+                            <br />
+                            <p style="display:inline">Office: @item.Office</p>
+                            <p class="stats">Role: @item.Role</p>
+                            <p class="stats">Format: @item.Format</p>
+                            <p class="stats">Duration: @item.Time</p>
+                            <p class="stats">CEUs: @item.CEU</p>
+                            <p class="stats">Contractor: @item.Contractor</p>
+                            <p class="stats">Instructor: @item.Instructor</p>
+                        </div>
+                        <!--<a href="#" class="image featured"><img src="~/Content/striped/images/pic01.jpg" alt="" /></a>-->
+                        <p>
+                            <b>Comments:</b> @item.Review
+                        </p>
+                    </article>
+
+
+
+					<!-- Pagination -->
+						<div class="pagination">
+							<!--<a href="#" class="button previous">Previous Page</a>-->
+							<div class="pages">
+								<a href="#" class="active">1</a>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<span>&hellip;</span>
+								<a href="#">20</a>
+							</div>
+							<a href="#" class="button next">Next Page</a>
+						</div>
+
+				</div>
+			</div>
+
+		<!-- Sidebar -->
+			<div id="sidebar">
+
+				<!-- Logo -->
+					<h1 id="logo"><a href="#">Training Reviews</a></h1>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="~/Trainings/Create1">Write a Review</a></li>
+							<li class="current"><a href="#">View Reviews</a></li>
+						</ul>
+					</nav>
+
+                <!-- Text -->
+                <section class="box text-style1">
+                    <div class="inner">
+                        <p>
+                            Enter a Topic or Course to search.
+                        </p>
+                    </div>
+                </section>
+
+				<!-- Search -->
+					<section class="box search">
+						<form method="post" action="#">
+							<input type="text" class="text" name="search" placeholder="Search" />
+						</form>
+					</section>
+
+
+				<!-- Recent Posts -
+					<section class="box recent-posts">
+						<header>
+							<h2>Recent Posts</h2>
+						</header>
+						<ul>
+							<li><a href="#">Lorem ipsum dolor</a></li>
+							<li><a href="#">Feugiat nisl aliquam</a></li>
+							<li><a href="#">Sed dolore magna</a></li>
+							<li><a href="#">Malesuada commodo</a></li>
+							<li><a href="#">Ipsum metus nullam</a></li>
+						</ul>
+					</section> -->
+
+				<!-- Recent Comments 
+					<section class="box recent-comments">
+						<header>
+							<h2>Recent Comments</h2>
+						</header>
+						<ul>
+							<li>case on <a href="#">Lorem ipsum dolor</a></li>
+							<li>molly on <a href="#">Sed dolore magna</a></li>
+							<li>case on <a href="#">Sed dolore magna</a></li>
+						</ul>
+					</section> -->
+
+				<!-- Calendar -->
+					<section class="box calendar">
+						<div class="inner">
+							<table>
+                                @{ string x = mfi.GetMonthName(DateTime.Today.Month);
+                                    string y = DateTime.Today.Year.ToString();
+                                    string z = x + " " + y;
+                                    }
+								<caption>@z</caption>
+								<thead>
+									<tr>
+										<th scope="col" title="Monday">M</th>
+										<th scope="col" title="Tuesday">T</th>
+										<th scope="col" title="Wednesday">W</th>
+										<th scope="col" title="Thursday">T</th>
+										<th scope="col" title="Friday">F</th>
+										<th scope="col" title="Saturday">S</th>
+										<th scope="col" title="Sunday">S</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="4" class="pad"><span>&nbsp;</span></td>
+										<td><span>1</span></td>
+										<td><span>2</span></td>
+										<td><span>3</span></td>
+									</tr>
+									<tr>
+										<td><span>4</span></td>
+										<td><span>5</span></td>
+										<td><a href="#">6</a></td>
+										<td><span>7</span></td>
+										<td><span>8</span></td>
+										<td><span>9</span></td>
+										<td><a href="#">10</a></td>
+									</tr>
+									<tr>
+										<td><span>11</span></td>
+										<td><span>12</span></td>
+										<td><span>13</span></td>
+										<td class="today"><a href="#">14</a></td>
+										<td><span>15</span></td>
+										<td><span>16</span></td>
+										<td><span>17</span></td>
+									</tr>
+									<tr>
+										<td><span>18</span></td>
+										<td><span>19</span></td>
+										<td><span>20</span></td>
+										<td><span>21</span></td>
+										<td><span>22</span></td>
+										<td><a href="#">23</a></td>
+										<td><span>24</span></td>
+									</tr>
+									<tr>
+										<td><a href="#">25</a></td>
+										<td><span>26</span></td>
+										<td><span>27</span></td>
+										<td><span>28</span></td>
+										<td class="pad" colspan="3"><span>&nbsp;</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+
+				<!-- Copyright -->
+					<ul id="copyright">
+						<li><a href="http://158.74.49.6/aspeintranet">ASPE Intranet</a></li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="~/Content/striped/assets/js/jquery.min.js"></script>
+			<script src="~/Content/striped/assets/js/skel.min.js"></script>
+			<script src="~/Content/striped/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="~/Content/striped/assets/js/main.js"></script>
+
+	</body>
+</html>
