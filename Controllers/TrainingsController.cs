@@ -14,27 +14,49 @@ namespace Training4.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index1(string trainingRating, string searchString)
+        public ActionResult Index1(string trainingRating, string searchString, string sortOrder, int? page)
         {
-            var RatingList = new List<Decimal>(5) { 1, 2, 3, 4, 5 };
-            var RatingQry = from d in db.Trainings
-                            orderby d.Stars
-                            select d.Stars;
-            ViewBag.trainingRating = new SelectList(RatingList);
-
-
+            ViewBag.currentSort = sortOrder;
+            var RatingList = new List<Decimal>(5) { 5, 4, 3, 2, 1 };
+            ViewBag.trainingRating = new SelectList(RatingList, trainingRating);
+            ViewBag.search = searchString;
+            ViewBag.rating = trainingRating;
+            ViewBag.StarSort = String.IsNullOrEmpty(sortOrder) ? "star_desc" : "";
+            ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.TopicSort = sortOrder == "Topic" ? "topic_desc" : "Topic";
+            ViewBag.page = page.HasValue ? page : 0;
 
             var trainings = from t in db.Trainings
                             select t;
             if (!String.IsNullOrEmpty(searchString))
             {
-                trainings = trainings.Where(s => s.Course.Contains(searchString) || s.Topic.Contains(searchString));
+                trainings = trainings.Where(s => s.Course.Contains(searchString) || s.Topic.Contains(searchString) || s.Location.Contains(searchString));
             }
             if (!string.IsNullOrEmpty(trainingRating))
             {
                 decimal y = Decimal.Parse(trainingRating);
                 trainings = trainings.Where(x => x.Stars == y);
             }
+            switch (sortOrder) {
+                case "star_desc":
+                    trainings = trainings.OrderBy(t => t.Stars).ThenByDescending(t=>t.Date);
+                    break;
+                case "Date":
+                    trainings = trainings.OrderByDescending(t => t.Date).ThenByDescending(t=>t.Stars);
+                    break;
+                case "date_desc":
+                    trainings = trainings.OrderBy(t => t.Date).ThenByDescending(t=>t.Stars);
+                    break;
+                case "Topic":
+                    trainings = trainings.OrderBy(t => t.Topic).ThenByDescending(t => t.Stars).ThenByDescending(t => t.Date);
+                    break;
+                case "topic_desc":
+                    trainings = trainings.OrderByDescending(t => t.Topic).ThenByDescending(t => t.Stars).ThenByDescending(t => t.Date);
+                    break;
+                default:
+                    trainings = trainings.OrderByDescending(t => t.Stars).ThenByDescending(t => t.Date);
+                    break;
+        }
             return View(trainings.ToList());
         }
 
@@ -60,6 +82,7 @@ namespace Training4.Controllers
                 decimal y = Decimal.Parse(trainingRating);
                 trainings = trainings.Where(x => x.Stars == y);
             }
+            trainings = trainings.OrderByDescending(t => t.Stars).ThenBy(t => t.Date);
             return View(trainings.ToList());
         }
 

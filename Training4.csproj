@@ -169,6 +169,10 @@
     <Compile Include="Migrations\201602051812369_f.Designer.cs">
       <DependentUpon>201602051812369_f.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605111752224_required.cs" />
+    <Compile Include="Migrations\201605111752224_required.Designer.cs">
+      <DependentUpon>201605111752224_required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Training.cs" />
@@ -192,6 +196,7 @@
     <Content Include="Content\Identity\images\avatar.jpg" />
     <Content Include="Content\Identity\images\bg.jpg" />
     <Content Include="Content\Identity\images\bgorig.jpg" />
+    <Content Include="Content\Identity\images\favicon.ico" />
     <Content Include="Content\Identity\images\hhs.jpg" />
     <Content Include="Content\Identity\index.html" />
     <Content Include="Content\Identity\LICENSE.txt" />
@@ -368,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602051812369_f.resx">
       <DependentUpon>201602051812369_f.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605111752224_required.resx">
+      <DependentUpon>201605111752224_required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

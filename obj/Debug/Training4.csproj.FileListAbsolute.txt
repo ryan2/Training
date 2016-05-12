@@ -58,3 +58,4 @@ c:\Users\ryan.ricks\Documents\Visual Studio 2015\Projects\Training4\Training4\bi
 c:\Users\ryan.ricks\Documents\Visual Studio 2015\Projects\Training4\Training4\obj\Debug\Training4.Migrations.InitialCreate.resources
 c:\Users\ryan.ricks\Documents\Visual Studio 2015\Projects\Training4\Training4\obj\Debug\Training4.csproj.GenerateResource.Cache
 c:\Users\ryan.ricks\Documents\Visual Studio 2015\Projects\Training4\Training4\obj\Debug\Training4.Migrations.f.resources
+C:\Users\ryan.ricks\Documents\Visual Studio 2015\Projects\Training4\Training4\obj\Debug\Training4.Migrations.required.resources

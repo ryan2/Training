@@ -23,6 +23,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="~/Content/striped/assets/css/main.css" />
+        <link rel="shortcut icon" href="~/Content/Identity/images/favicon.ico" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
@@ -104,13 +105,13 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Topic, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Topic, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.EditorFor(model => model.Topic, new { htmlAttributes = new { @class = "form-control"} })
                                             @Html.ValidationMessageFor(model => model.Topic, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        @{ x = "Training Name";}
+                                        @{ x = "Course Name";}
                                         @Html.LabelFor(model => model.Course, x, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
                                             @Html.EditorFor(model => model.Course, new { htmlAttributes = new { @class = "form-control" } })
@@ -210,16 +211,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        @{x = "Would you recommend it to other ASPE employees?";}
-                                        @Html.LabelFor(model => model.Recommend, x, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            <div class="checkbox">
-                                                @Html.EditorFor(model => model.Recommend)
-                                                @Html.ValidationMessageFor(model => model.Recommend, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
+                                
 
                                     <div class="form-group">
                                         <div class="col-md-offset-2 col-md-10">
@@ -256,7 +248,7 @@
 			<div id="sidebar">
 
 				<!-- Logo -->
-					<h1 id="logo"><a href="#">Training Reviews</a></h1>
+					<h1 id="logo"><a href="~/Trainings/Index1">Training Reviews</a></h1>
 
 				<!-- Nav -->
 					<nav id="nav">
@@ -270,115 +262,151 @@
                 <section class="box text-style1">
                     <div class="inner">
                         <p>
-                            Enter a Topic or Course to search.
+                            The Date, Topic, Course Name, Link to Enroll and Location fields must be input before you can submit your review.
                         </p>
                     </div>
                 </section>
 
-				<!-- Search -->
-					<section class="box search">
-						<form method="post" action="#">
-							<input type="text" class="text" name="search" placeholder="Search" />
-						</form>
-					</section>
+              @*  <!-- Search 
+                <section class="box">
+                    <h2>Search</h2>
+                    @using (Html.BeginForm())
+                    {
+                        <p>
+                            Rating: @Html.DropDownList("trainingRating", "All")
+                            Topic or Course: @Html.TextBox("SearchString", (string)ViewBag.search)<br />
+                            <input type="submit" value="Search" class="btn" />
+                        </p>
+                    }
+                </section>
 
+                <!--Sorting
+                <section class="box">
+                    <h2>Sort By:</h2>
+                    <p>
+                        @Html.ActionLink("Rating", "Index1", new { sortOrder = ViewBag.StarSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" }) <br /><br />
+                        @Html.ActionLink("Date", "Index1", new { sortOrder = ViewBag.DateSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" }) <br /><br />
+                        @Html.ActionLink("Topic", "Index1", new { sortOrder = ViewBag.TopicSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" })
+                    </p>
+                </section>--> *@
 
-				<!-- Recent Posts -
-					<section class="box recent-posts">
-						<header>
-							<h2>Recent Posts</h2>
-						</header>
-						<ul>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Feugiat nisl aliquam</a></li>
-							<li><a href="#">Sed dolore magna</a></li>
-							<li><a href="#">Malesuada commodo</a></li>
-							<li><a href="#">Ipsum metus nullam</a></li>
-						</ul>
-					</section> -->
+                <!-- Recent Posts -
+        <section class="box recent-posts">
+            <header>
+                <h2>Recent Posts</h2>
+            </header>
+            <ul>
+                <li><a href="#">Lorem ipsum dolor</a></li>
+                <li><a href="#">Feugiat nisl aliquam</a></li>
+                <li><a href="#">Sed dolore magna</a></li>
+                <li><a href="#">Malesuada commodo</a></li>
+                <li><a href="#">Ipsum metus nullam</a></li>
+            </ul>
+        </section> -->
+                <!-- Recent Comments
+        <section class="box recent-comments">
+            <header>
+                <h2>Recent Comments</h2>
+            </header>
+            <ul>
+                <li>case on <a href="#">Lorem ipsum dolor</a></li>
+                <li>molly on <a href="#">Sed dolore magna</a></li>
+                <li>case on <a href="#">Sed dolore magna</a></li>
+            </ul>
+        </section> -->
+                <!-- Calendar -->
+                <section class="box calendar">
+                    <div class="inner">
+                        <table>
+                            @{ string t = mfi.GetMonthName(DateTime.Today.Month);
+                                string y = DateTime.Today.Year.ToString();
+                                string z = t + " " + y;
+                                int daysinmonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
+                                var mon = new List<int>(5) { };
+                                var tues = new List<int>(5) { };
+                                var wed = new List<int>(5) { };
+                                var thurs = new List<int>(5) { };
+                                var fri = new List<int>(5) { };
+                                var sat = new List<int>(5) { };
+                                var sun = new List<int>(5) { };
+                            }
+                            <caption>@z</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" title="Monday">M</th>
+                                    <th scope="col" title="Tuesday">T</th>
+                                    <th scope="col" title="Wednesday">W</th>
+                                    <th scope="col" title="Thursday">T</th>
+                                    <th scope="col" title="Friday">F</th>
+                                    <th scope="col" title="Saturday">S</th>
+                                    <th scope="col" title="Sunday">Su</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span>&nbsp;</span></td>
+                                    <td><span>&nbsp;</span></td>
+                                    <td><span>&nbsp;</span></td>
+                                    <td><span>&nbsp;</span></td>
+                                    <td><span>&nbsp;</span></td>
+                                    <td><span>&nbsp;</span></td>
+                                    <td><span>1</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>2</span></td>
+                                    <td><span>3</span></td>
+                                    <td><span>4</span></td>
+                                    <td><span>5</span></td>
+                                    <td><span>6</span></td>
+                                    <td><span>7</span></td>
+                                    <td><span>8</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>9</span></td>
+                                    <td><span>10</span></td>
+                                    <td><span>11</span></td>
+                                    <td class="today"><a>12</a></td>
+                                    <td><span>13</span></td>
+                                    <td><span>14</span></td>
+                                    <td><span>15</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>16</span></td>
+                                    <td><span>17</span></td>
+                                    <td><span>18</span></td>
+                                    <td><span>19</span></td>
+                                    <td><span>20</span></td>
+                                    <td><span>21</span></td>
+                                    <td><span>22</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>23</span></td>
+                                    <td><span>24</span></td>
+                                    <td><span>25</span></td>
+                                    <td><span>26</span></td>
+                                    <td><span>27</span></td>
+                                    <td><span>28</span></td>
+                                    <td><span>29</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>30</span></td>
+                                    <td><span>31</span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
 
-				<!-- Recent Comments 
-					<section class="box recent-comments">
-						<header>
-							<h2>Recent Comments</h2>
-						</header>
-						<ul>
-							<li>case on <a href="#">Lorem ipsum dolor</a></li>
-							<li>molly on <a href="#">Sed dolore magna</a></li>
-							<li>case on <a href="#">Sed dolore magna</a></li>
-						</ul>
-					</section> -->
+                <!-- Copyright -->
+                <ul id="copyright">
+                    <li><a href="http://158.74.49.6/aspeintranet">ASPE Intranet</a></li><!--<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
+                </ul>
 
-				<!-- Calendar -->
-					<section class="box calendar">
-						<div class="inner">
-							<table>
-                                @{ string a = mfi.GetMonthName(DateTime.Today.Month);
-                                    string y = DateTime.Today.Year.ToString();
-                                    string z = a + " " + y;
-                                    }
-								<caption>@z</caption>
-								<thead>
-									<tr>
-										<th scope="col" title="Monday">M</th>
-										<th scope="col" title="Tuesday">T</th>
-										<th scope="col" title="Wednesday">W</th>
-										<th scope="col" title="Thursday">T</th>
-										<th scope="col" title="Friday">F</th>
-										<th scope="col" title="Saturday">S</th>
-										<th scope="col" title="Sunday">S</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td colspan="4" class="pad"><span>&nbsp;</span></td>
-										<td><span>1</span></td>
-										<td><span>2</span></td>
-										<td><span>3</span></td>
-									</tr>
-									<tr>
-										<td><span>4</span></td>
-										<td><span>5</span></td>
-										<td><a href="#">6</a></td>
-										<td><span>7</span></td>
-										<td><span>8</span></td>
-										<td><span>9</span></td>
-										<td><a href="#">10</a></td>
-									</tr>
-									<tr>
-										<td><span>11</span></td>
-										<td><span>12</span></td>
-										<td><span>13</span></td>
-										<td class="today"><a href="#">14</a></td>
-										<td><span>15</span></td>
-										<td><span>16</span></td>
-										<td><span>17</span></td>
-									</tr>
-									<tr>
-										<td><span>18</span></td>
-										<td><span>19</span></td>
-										<td><span>20</span></td>
-										<td><span>21</span></td>
-										<td><span>22</span></td>
-										<td><a href="#">23</a></td>
-										<td><span>24</span></td>
-									</tr>
-									<tr>
-										<td><a href="#">25</a></td>
-										<td><span>26</span></td>
-										<td><span>27</span></td>
-										<td><span>28</span></td>
-										<td class="pad" colspan="3"><span>&nbsp;</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</section>
-
-				<!-- Copyright -->
-					<ul id="copyright">
-						<li><a href="http://158.74.49.6/aspeintranet">ASPE Intranet</a></li><!--<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
-					</ul>
 
 			</div>
 
