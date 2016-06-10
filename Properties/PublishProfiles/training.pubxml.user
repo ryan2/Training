@@ -112,7 +112,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2016 11:24:26</publishTime>
     </File>
     <File Include="bin/Training4.dll">
-      <publishTime>05/12/2016 10:52:52</publishTime>
+      <publishTime>06/07/2016 15:09:17</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>02/05/2016 11:24:26</publishTime>
@@ -325,7 +325,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2016 13:29:16</publishTime>
     </File>
     <File Include="Content/striped/assets/css/main.css">
-      <publishTime>04/29/2016 14:10:28</publishTime>
+      <publishTime>06/07/2016 16:37:05</publishTime>
     </File>
     <File Include="Content/striped/assets/fonts/fontawesome-webfont.eot">
       <publishTime>04/26/2016 13:29:16</publishTime>
@@ -391,7 +391,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2016 13:29:16</publishTime>
     </File>
     <File Include="Content/striped/index.html">
-      <publishTime>04/29/2016 13:13:13</publishTime>
+      <publishTime>05/18/2016 13:00:38</publishTime>
     </File>
     <File Include="Content/striped/LICENSE.txt">
       <publishTime>04/26/2016 13:29:16</publishTime>
@@ -426,6 +426,27 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/themes/base/draggable.css">
       <publishTime>05/02/2016 16:39:00</publishTime>
     </File>
+    <File Include="Content/themes/base/images/ui-bg_carbon-fiber_35_f64828_8x9.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_diagonal-maze_50_ce7e7e_10x10.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_diagonal-maze_50_e3b5b5_10x10.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_diagonals-thick_18_b81900_40x40.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_diagonals-thick_20_666666_40x40.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_diamond-ripple_100_eeeeee_22x22.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_diamond-ripple_65_eeeeee_22x22.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>05/02/2016 16:39:00</publishTime>
     </File>
@@ -447,14 +468,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png">
       <publishTime>05/02/2016 16:39:00</publishTime>
     </File>
+    <File Include="Content/themes/base/images/ui-bg_highlight-soft_75_5ce4ff_1x100.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
     <File Include="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
       <publishTime>05/02/2016 16:39:00</publishTime>
     </File>
+    <File Include="Content/themes/base/images/ui-icons_000000_256x240.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
     <File Include="Content/themes/base/images/ui-icons_222222_256x240.png">
-      <publishTime>05/02/2016 16:39:00</publishTime>
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_228ef1_256x240.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-icons_2e83ff_256x240.png">
-      <publishTime>05/02/2016 16:39:00</publishTime>
+      <publishTime>06/08/2016 16:29:52</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-icons_454545_256x240.png">
       <publishTime>05/02/2016 16:39:00</publishTime>
@@ -464,6 +494,24 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/themes/base/images/ui-icons_cd0a0a_256x240.png">
       <publishTime>05/02/2016 16:39:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_dd7979_256x240.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_ffd27a_256x240.png">
+      <publishTime>06/07/2016 16:59:44</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_ffffff_256x240.png">
+      <publishTime>06/08/2016 16:29:52</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.css">
+      <publishTime>06/08/2016 16:29:52</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.structure.css">
+      <publishTime>06/08/2016 16:29:52</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.theme.css">
+      <publishTime>06/08/2016 16:29:52</publishTime>
     </File>
     <File Include="Content/themes/base/menu.css">
       <publishTime>05/02/2016 16:39:00</publishTime>
@@ -541,10 +589,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2016 11:24:24</publishTime>
     </File>
     <File Include="Scripts/jquery-ui-1.11.4.js">
-      <publishTime>05/02/2016 16:39:00</publishTime>
+      <publishTime>06/07/2016 16:59:44</publishTime>
     </File>
     <File Include="Scripts/jquery-ui-1.11.4.min.js">
-      <publishTime>05/02/2016 16:39:00</publishTime>
+      <publishTime>06/07/2016 16:59:44</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
       <publishTime>02/05/2016 11:24:27</publishTime>
@@ -592,7 +640,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/02/2016 16:59:52</publishTime>
     </File>
     <File Include="Views/Trainings/Create1.cshtml">
-      <publishTime>05/12/2016 10:51:57</publishTime>
+      <publishTime>06/07/2016 15:01:41</publishTime>
     </File>
     <File Include="Views/Trainings/Delete.cshtml">
       <publishTime>02/05/2016 13:03:23</publishTime>
@@ -607,7 +655,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2016 17:02:45</publishTime>
     </File>
     <File Include="Views/Trainings/Index1.cshtml">
-      <publishTime>05/12/2016 10:52:04</publishTime>
+      <publishTime>06/07/2016 15:01:14</publishTime>
+    </File>
+    <File Include="Views/Trainings/Index2.cshtml">
+      <publishTime>06/08/2016 12:44:03</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/05/2016 11:24:20</publishTime>

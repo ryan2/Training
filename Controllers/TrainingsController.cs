@@ -59,6 +59,53 @@ namespace Training4.Controllers
         }
             return View(trainings.ToList());
         }
+        // GET: Index 2 (Condensed View)
+        public ActionResult Index2(string trainingRating, string searchString, string sortOrder, int? page)
+        {
+            ViewBag.currentSort = sortOrder;
+            var RatingList = new List<Decimal>(5) { 5, 4, 3, 2, 1 };
+            ViewBag.trainingRating = new SelectList(RatingList, trainingRating);
+            ViewBag.search = searchString;
+            ViewBag.rating = trainingRating;
+            ViewBag.StarSort = String.IsNullOrEmpty(sortOrder) ? "star_desc" : "";
+            ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.TopicSort = sortOrder == "Topic" ? "topic_desc" : "Topic";
+            ViewBag.page = page.HasValue ? page : 0;
+
+            var trainings = from t in db.Trainings
+                            select t;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                trainings = trainings.Where(s => s.Course.Contains(searchString) || s.Topic.Contains(searchString) || s.Location.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(trainingRating))
+            {
+                decimal y = Decimal.Parse(trainingRating);
+                trainings = trainings.Where(x => x.Stars == y);
+            }
+            switch (sortOrder)
+            {
+                case "star_desc":
+                    trainings = trainings.OrderBy(t => t.Stars).ThenByDescending(t => t.Date);
+                    break;
+                case "Date":
+                    trainings = trainings.OrderByDescending(t => t.Date).ThenByDescending(t => t.Stars);
+                    break;
+                case "date_desc":
+                    trainings = trainings.OrderBy(t => t.Date).ThenByDescending(t => t.Stars);
+                    break;
+                case "Topic":
+                    trainings = trainings.OrderBy(t => t.Topic).ThenByDescending(t => t.Stars).ThenByDescending(t => t.Date);
+                    break;
+                case "topic_desc":
+                    trainings = trainings.OrderByDescending(t => t.Topic).ThenByDescending(t => t.Stars).ThenByDescending(t => t.Date);
+                    break;
+                default:
+                    trainings = trainings.OrderByDescending(t => t.Stars).ThenByDescending(t => t.Date);
+                    break;
+            }
+            return View(trainings.ToList());
+        }
 
         // GET: Trainings
         public ActionResult Index(string trainingRating, string searchString)
@@ -134,6 +181,14 @@ namespace Training4.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (training.Url.Contains("http://"))
+                {
+                    training.Url = training.Url.Substring(7);
+                }
+                else if (training.Url.Contains("https://"))
+                {
+                    training.Url = training.Url.Substring(8);
+                }
                 db.Trainings.Add(training);
                 db.SaveChanges();
                 return RedirectToAction("Index1");

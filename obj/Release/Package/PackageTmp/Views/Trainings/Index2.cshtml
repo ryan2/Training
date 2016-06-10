@@ -1,0 +1,287 @@
+﻿<!DOCTYPE HTML>
+<!--@*
+	Striped by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license) *@
+-->
+<html>
+	<head>
+        @model IEnumerable<Training4.Models.Training>
+        @{
+            Layout = null;
+            System.Globalization.DateTimeFormatInfo mfi = new System.Globalization.DateTimeFormatInfo();
+            @Scripts.Render("~/bundles/modernizr");
+            @Scripts.Render("~/bundles/jquery");
+            @Scripts.Render("~/bundles/bootstrap");
+            @Scripts.Render("~/bundles/jqueryval");
+            @Scripts.Render("~/bundles/jqueryui");
+            @Styles.Render("~/Content/themes/base/css");
+        }
+		<title>Training Reviews</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="~/Content/striped/assets/css/main.css" />
+        <link rel="shortcut icon" href="~/Content/Identity/images/favicon.ico" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        
+        
+        
+        
+        
+        <style>
+            .class0{
+                width:100%;
+                float:left;
+            }
+            .class1{
+                float:left;
+                width:18%;
+                border-right:solid;
+                
+                        }
+            .class2{
+                float:left;
+                padding-left:20px;
+                width:82%;
+            }
+            a.url{
+                text-decoration:none;
+                color:black
+            }
+            a.url:hover{
+                text-decoration:underline;
+            }
+        </style> 
+	</head>
+	<body>
+        <script>
+            var $j = jQuery.noConflict();
+            $j(function () {
+                $j("#accordion").accordion({ collapsible: true, active: false, icons: { "header": "ui-icon-plusthick", "activeHeader": "ui-icon-minusthick" } });
+            });
+        </script>
+
+		<!-- Content -->
+			<div id="content">
+                <div id="inner">
+                    
+                    <article class="box post post-excerpt">
+                       <div id="accordion">
+@foreach (var item in Model)
+{
+    <div style="margin-top:20px" class="class0">
+        <div class="class1">
+            <p style="margin-bottom:0px;">@item.Topic - @item.Course</p><p style="margin-top:0px; margin-bottom:0px">@item.Location</p>
+            @{ int star = (int)item.Stars;
+                int max = 5;
+            }
+            @while (star-- > 0)
+            {
+                max--;
+                <i style="margin-top:0px; margin-bottom:0px" class="icon fa-star"></i>
+            }
+            @while (max-- > 0)
+            {
+                <i style="margin-top:0px; margin-bottom:0px" class="icon fa-star-o"></i>
+            }
+            <p style="margin-top:0px; margin-bottom:0px">@item.Date.ToShortDateString()</p>
+            </div>
+
+            <div class="class2"><h3 style="margin-bottom:3px;"><a class="url" href="//@item.Url">@item.Url</a></h3><p>Office: @item.Office | Role: @item.Role | Format: @item.Format | Duration: @item.Time <br />Continuing Education Units: @item.CEU | Contractor: @item.Contractor | Instructor: @item.Instructor</p>
+        </div>
+    </div>
+                           <div><p><b>Comments:</b> @item.Review</p></div>
+}
+
+
+                       
+</div>
+                    </article>
+
+                    
+
+
+              </div>
+                <br /><br /><br />
+</div>
+
+
+		<!-- Sidebar -->
+			<div id="sidebar">
+
+				<!-- Logo -->
+					<h1 id="logo"><a href="~/Trainings/Index1">Training Reviews</a></h1>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="~/Trainings/Create1">Write a Review</a></li>							
+                            <li><a href="~/Trainings/Index1">Browse Reviews</a></li>
+                            <li class="current"><a href="#">Browse Reviews (Condensed)</a></li>
+						</ul>
+					</nav>
+
+                <!-- Text -->
+                <section class="box text-style1">
+                    <div class="inner">
+                        <p>
+                            Use the Search and Sort tools below to narrow your results.
+                        </p>
+                    </div>
+                </section>
+
+				<!-- Search -->
+					<section class="box">
+                        <h2>Search</h2>
+						@using (Html.BeginForm())
+                        {
+                            <p>
+                                Rating: @Html.DropDownList("trainingRating","All")
+                                Topic or Course: @Html.TextBox("SearchString",(string)ViewBag.search)<br />
+                                <!--<input type="submit" value="Search" class="button" />-->
+                                <button type="submit" class="btn btn-lg" style="border:none"><span class="icon fa-search"></span><span class="submit-text"> Search</span></button>
+                            </p>
+                        }
+					</section>
+
+                <!--Sorting-->
+                    <section class="box">
+                        <h2>Sort By:</h2>
+                        <p>
+                            @Html.ActionLink("Rating","Index1", new { sortOrder = ViewBag.StarSort, searchString = ViewBag.search, trainingRating = ViewBag.rating}, htmlAttributes: new { @class = "button" }) <br /><br />
+                            @Html.ActionLink("Date", "Index1", new { sortOrder = ViewBag.DateSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" }) <br /><br />
+                            @Html.ActionLink("Topic", "Index1", new { sortOrder = ViewBag.TopicSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" })
+                        </p> 
+                    </section>
+
+				<!-- Recent Posts -
+					<section class="box recent-posts">
+						<header>
+							<h2>Recent Posts</h2>
+						</header>
+						<ul>
+							<li><a href="#">Lorem ipsum dolor</a></li>
+							<li><a href="#">Feugiat nisl aliquam</a></li>
+							<li><a href="#">Sed dolore magna</a></li>
+							<li><a href="#">Malesuada commodo</a></li>
+							<li><a href="#">Ipsum metus nullam</a></li>
+						</ul>
+					</section> -->
+
+				<!-- Recent Comments 
+					<section class="box recent-comments">
+						<header>
+							<h2>Recent Comments</h2>
+						</header>
+						<ul>
+							<li>case on <a href="#">Lorem ipsum dolor</a></li>
+							<li>molly on <a href="#">Sed dolore magna</a></li>
+							<li>case on <a href="#">Sed dolore magna</a></li>
+						</ul>
+					</section> -->
+
+				<!-- Calendar -->
+                    <section class="box calendar">
+                        <div class="inner">
+                            <table>
+                               @{ string x = mfi.GetMonthName(DateTime.Today.Month);
+                                   string y = DateTime.Today.Year.ToString();
+                                   string z = x + " " + y;
+                                   int daysinmonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
+                                   var mon = new List<int>(5) { };
+                                   var tues = new List<int>(5) { };
+                                   var wed = new List<int>(5) { };
+                                   var thurs = new List<int>(5) { };
+                                   var fri = new List<int>(5) { };
+                                   var sat = new List<int>(5) { };
+                                   var sun = new List<int>(5) { };
+                               }
+                                <caption>@z</caption> 
+                                <thead>
+                                    <tr>
+                                        <th scope="col" title="Monday">M</th>
+                                        <th scope="col" title="Tuesday">T</th>
+                                        <th scope="col" title="Wednesday">W</th>
+                                        <th scope="col" title="Thursday">T</th>
+                                        <th scope="col" title="Friday">F</th>
+                                        <th scope="col" title="Saturday">S</th>
+                                        <th scope="col" title="Sunday">Su</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>1</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>2</span></td>
+                                        <td><span>3</span></td>
+                                        <td><span>4</span></td>
+                                        <td><span>5</span></td>
+                                        <td><span>6</span></td>
+                                        <td><span>7</span></td>
+                                        <td><span>8</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>9</span></td>
+                                        <td><span>10</span></td>
+                                        <td><span>11</span></td>
+                                        <td class="today"><a>12</a></td>
+                                        <td><span>13</span></td>
+                                        <td><span>14</span></td>
+                                        <td><span>15</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>16</span></td>
+                                        <td><span>17</span></td>
+                                        <td><span>18</span></td>
+                                        <td><span>19</span></td>
+                                        <td><span>20</span></td>
+                                        <td><span>21</span></td>
+                                        <td><span>22</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>23</span></td>
+                                        <td><span>24</span></td>
+                                        <td><span>25</span></td>
+                                        <td><span>26</span></td>
+                                        <td><span>27</span></td>
+                                        <td><span>28</span></td>
+                                        <td><span>29</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>30</span></td>
+                                        <td><span>31</span></td>
+                                        <td><span></span></td>
+                                        <td><span></span></td>
+                                        <td><span></span></td>
+                                        <td><span></span></td>
+                                        <td><span></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Copyright -->
+                    <ul id="copyright">
+                        <li><a href="http://158.74.49.6/aspeintranet">ASPE Intranet</a></li><!--<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
+                    </ul>
+
+</div>
+
+		<!-- Scripts -->
+			<script src="~/Content/striped/assets/js/jquery.min.js"></script>
+			<script src="~/Content/striped/assets/js/skel.min.js"></script>
+			<script src="~/Content/striped/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="~/Content/striped/assets/js/main.js"></script>
+
+	</body>
+</html>
