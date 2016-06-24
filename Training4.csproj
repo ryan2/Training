@@ -179,6 +179,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ApplicationDbContext-20160205125104.mdf" />
+    <Content Include="App_Data\ApplicationDbContext-20160205125104_log.ldf">
+      <DependentUpon>ApplicationDbContext-20160205125104.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Identity\assets\css\font-awesome.min.css" />
@@ -353,9 +357,7 @@
     <Content Include="Views\Trainings\Create1.cshtml" />
     <Content Include="Views\Trainings\Index2.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

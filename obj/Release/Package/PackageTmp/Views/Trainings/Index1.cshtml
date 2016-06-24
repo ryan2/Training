@@ -32,15 +32,27 @@
             a.url:hover{
                 text-decoration:underline;
             }
+            .test {
+                display:none;
+            }
         </style> 
+        <script>
+            var $j = jQuery.noConflict();
+            $j(document).ready(function () {
+                $j(".tog").click(function () {
+                    $j(this).toggleClass("fa-plus-square fa-minus-square")
+                    $j(this).next(".test").toggle();
+                });
+            });
+        </script>
 	</head>
 	<body>
 
 		<!-- Content -->
 			<div id="content">
 				<div class="inner">
-                    @{int page1 = ViewBag.page * 3; }
-                    @foreach (var item in Model.Skip(page1).Take(3))
+                    @{int page1 = ViewBag.page * 5; }
+                    @foreach (var item in Model.Skip(page1).Take(5))
                     {
 					<!-- Post -->
 						<article class="box post post-excerpt">
@@ -100,14 +112,14 @@
                                 <p class="stats">Duration: @item.Time</p>
                                 <p class="stats">Continuing Education Units: @item.CEU</p>
                                 <p class="stats">Contractor: @item.Contractor</p>
-                                <p class="stats">Instructor: @item.Instructor</p>
+                                <p class="stats">Instructor: @item.Instructor</p><br />
+                                <!--<div class="tog" style="border: 1px solid black;overflow:auto;display:inline-block;border-radius:8px;padding:2px 2px 2px 2px;"><p style="padding-right:0.5em;margin-bottom:0px;float:left;">More Details</p><i style="margin-top:0px; margin-bottom:0px;float:left;" class="icon fa-caret-square-o-down"></i></div>-->
+                                <i style="padding-top:10px; margin-bottom:0px;cursor:pointer;" class="icon fa-plus-square fa-2x tog"></i>
+                                <p class="test" style="border: 1px solid black;border-radius:5px;padding-left:5px;"><b>Comments:</b> @item.Review</p>
 							</div>
 							<!--<a href="#" class="image featured"><img src="~/Content/striped/images/pic01.jpg" alt="" /></a>-->
-							<p>
-								<b>Comments:</b> @item.Review
-							</p>
 						</article>
-                    <br />
+                        <hr style="clear:both;" />
                                         }
 
 					<!-- Pagination -->
@@ -115,7 +127,7 @@
 							<!--<a href="#" class="button previous">Previous Page</a>-->
 							<div class="pages">
                                 @{ int total = Model.Count();
-                                    int pages = (total + 2) / 3;
+                                    int pages = (total + 4) / 5;
                                     int totalpages = pages;
                                     int i = 1;}
                                 @while (pages > 0)
