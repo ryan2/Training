@@ -229,7 +229,7 @@
 
                                     <div class="form-group">
                                         <div class="col-md-10">
-                                            <input type="submit" value="Post" class="btn btn-lg" />
+                                            <input type="submit" value="Post" class="btn btn-lg"/>
                                         </div>
                                     </div>
                                 </div>
@@ -333,23 +333,30 @@
                 <section class="box calendar">
                     <div class="inner">
                         <table>
-                            @{ string t = mfi.GetMonthName(DateTime.Today.Month);
+                            @{ string m = mfi.GetMonthName(DateTime.Today.Month);
                                 string y = DateTime.Today.Year.ToString();
-                                string z = t + " " + y;
+                                string z = m + " " + y;
                                 int daysinmonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
-                                var mon = new List<int>(5) { };
-                                var tues = new List<int>(5) { };
-                                var wed = new List<int>(5) { };
-                                var thurs = new List<int>(5) { };
-                                var fri = new List<int>(5) { };
-                                var sat = new List<int>(5) { };
-                                var sun = new List<int>(5) { };
+                                DateTime first = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+                                DateTime last = new DateTime(DateTime.Today.Year, DateTime.Today.Month, daysinmonth);
+                                int lastday = (int)(last.DayOfWeek + 6) % 7;
+                                int firstday = (int)(first.DayOfWeek + 6) % 7;
+                                int weeks = 5;
+                                if (((daysinmonth == 30 || daysinmonth == 31) && firstday == 6) || (daysinmonth == 31 && firstday == 5))
+                                {
+                                    weeks = 6;
+                                }
+                                int skipfirst = firstday;
+                                int skiplast = 6 - lastday;
+                                int daycount = 1;
+                                int k = 0;
+                                int today = DateTime.Today.Day;
                             }
                             <caption>@z</caption>
                             <thead>
                                 <tr>
                                     <th scope="col" title="Monday">M</th>
-                                    <th scope="col" title="Tuesday">T</th>
+                                    <th scope="col" title="Tuesday">Tu</th>
                                     <th scope="col" title="Wednesday">W</th>
                                     <th scope="col" title="Thursday">T</th>
                                     <th scope="col" title="Friday">F</th>
@@ -359,63 +366,130 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><span>&nbsp;</span></td>
-                                    <td><span>&nbsp;</span></td>
-                                    <td><span>&nbsp;</span></td>
-                                    <td><span>&nbsp;</span></td>
-                                    <td><span>&nbsp;</span></td>
-                                    <td><span>&nbsp;</span></td>
-                                    <td><span>1</span></td>
+                                    @while (skipfirst > 0)
+                                    {
+                                        <td><span>&nbsp;</span></td>
+                                        skipfirst--;
+                                    }
+                                    @while (firstday < 7)
+                                    {
+                                        if (today == daycount)
+                                        {
+                                            <td class="today"><a>@daycount</a></td>
+                                            daycount++;
+                                            firstday++;
+                                            continue;
+                                        }
+                                        <td><span>@daycount</span></td>
+                                        daycount++;
+                                        firstday++;
+                                    }
                                 </tr>
                                 <tr>
-                                    <td><span>2</span></td>
-                                    <td><span>3</span></td>
-                                    <td><span>4</span></td>
-                                    <td><span>5</span></td>
-                                    <td><span>6</span></td>
-                                    <td><span>7</span></td>
-                                    <td><span>8</span></td>
+                                    @while (k++ < 7)
+                                    {
+                                        if (today == daycount)
+                                        {
+                                            <td class="today"><a>@daycount</a></td>
+                                            daycount++;
+                                            continue;
+                                        }
+                                        <td><span>@daycount</span></td>
+                                        daycount++;
+                                    }
                                 </tr>
                                 <tr>
-                                    <td><span>9</span></td>
-                                    <td><span>10</span></td>
-                                    <td><span>11</span></td>
-                                    <td class="today"><a>12</a></td>
-                                    <td><span>13</span></td>
-                                    <td><span>14</span></td>
-                                    <td><span>15</span></td>
+                                    @{k = 0; }
+                                    @while (k++ < 7)
+                                    {
+                                        if (today == daycount)
+                                        {
+                                            <td class="today"><a>@daycount</a></td>
+                                            daycount++;
+                                            continue;
+                                        }
+                                        <td><span>@daycount</span></td>
+                                        daycount++;
+                                    }
                                 </tr>
                                 <tr>
-                                    <td><span>16</span></td>
-                                    <td><span>17</span></td>
-                                    <td><span>18</span></td>
-                                    <td><span>19</span></td>
-                                    <td><span>20</span></td>
-                                    <td><span>21</span></td>
-                                    <td><span>22</span></td>
+                                    @{k = 0; }
+                                    @while (k++ < 7)
+                                    {
+                                        if (today == daycount)
+                                        {
+                                            <td class="today"><a>@daycount</a></td>
+                                            daycount++;
+                                            continue;
+                                        }
+                                        <td><span>@daycount</span></td>
+                                        daycount++;
+                                    }
                                 </tr>
                                 <tr>
-                                    <td><span>23</span></td>
-                                    <td><span>24</span></td>
-                                    <td><span>25</span></td>
-                                    <td><span>26</span></td>
-                                    <td><span>27</span></td>
-                                    <td><span>28</span></td>
-                                    <td><span>29</span></td>
+                                    @if (weeks == 6)
+                                    {
+                                        k = 0;
+                                        while (k++ < 7)
+                                        {
+                                            if (today == daycount)
+                                            {
+                                                <td class="today"><a>@daycount</a></td>
+                                                daycount++;
+                                                continue;
+                                            }
+                                            <td><span>@daycount</span></td>
+                                            daycount++;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        while (daycount <= daysinmonth)
+                                        {
+                                            if (today == daycount)
+                                            {
+                                                <td class="today"><a>@daycount</a></td>
+                                                daycount++;
+                                                continue;
+                                            }
+                                            <td><span>@daycount</span></td>
+                                            daycount++;
+                                        }
+                                        while (skiplast > 0)
+                                        {
+                                            <td><span>&nbsp;</span></td>
+                                            skiplast--;
+                                        }
+                                    }
+
                                 </tr>
-                                <tr>
-                                    <td><span>30</span></td>
-                                    <td><span>31</span></td>
-                                    <td><span></span></td>
-                                    <td><span></span></td>
-                                    <td><span></span></td>
-                                    <td><span></span></td>
-                                    <td><span></span></td>
-                                </tr>
+                                @if (weeks == 6)
+                                {
+                                    <tr>
+                                        @while (daycount <= daysinmonth)
+                                        {
+                                            if (today == daycount)
+                                            {
+                                                <td class="today"><a>@daycount</a></td>
+                                                daycount++;
+                                                continue;
+                                            }
+                                            <td><span>@daycount</span></td>
+                                            daycount++;
+                                        }
+                                        @while (skiplast > 0)
+                                        {
+                                            <td><span>&nbsp;</span></td>
+                                            skiplast--;
+                                        }
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
                 </section>
+
+
 
                 <!-- Copyright -->
                 <ul id="copyright">
