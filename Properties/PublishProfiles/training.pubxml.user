@@ -112,7 +112,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2016 11:24:26</publishTime>
     </File>
     <File Include="bin/Training4.dll">
-      <publishTime>06/07/2016 15:09:17</publishTime>
+      <publishTime>07/15/2016 11:44:54</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>02/05/2016 11:24:26</publishTime>
@@ -325,7 +325,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2016 13:29:16</publishTime>
     </File>
     <File Include="Content/striped/assets/css/main.css">
-      <publishTime>06/24/2016 16:04:03</publishTime>
+      <publishTime>07/15/2016 11:36:40</publishTime>
     </File>
     <File Include="Content/striped/assets/fonts/fontawesome-webfont.eot">
       <publishTime>04/26/2016 13:29:16</publishTime>
@@ -358,7 +358,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2016 13:29:16</publishTime>
     </File>
     <File Include="Content/striped/assets/js/main.js">
-      <publishTime>04/26/2016 13:29:16</publishTime>
+      <publishTime>06/28/2016 12:19:07</publishTime>
     </File>
     <File Include="Content/striped/assets/js/skel.min.js">
       <publishTime>04/26/2016 13:29:16</publishTime>
@@ -640,7 +640,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/02/2016 16:59:52</publishTime>
     </File>
     <File Include="Views/Trainings/Create1.cshtml">
-      <publishTime>06/07/2016 15:01:41</publishTime>
+      <publishTime>07/15/2016 11:41:58</publishTime>
     </File>
     <File Include="Views/Trainings/Delete.cshtml">
       <publishTime>02/05/2016 13:03:23</publishTime>
@@ -655,7 +655,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2016 17:02:45</publishTime>
     </File>
     <File Include="Views/Trainings/Index1.cshtml">
-      <publishTime>06/24/2016 16:01:25</publishTime>
+      <publishTime>07/15/2016 11:42:35</publishTime>
     </File>
     <File Include="Views/Trainings/Index2.cshtml">
       <publishTime>06/10/2016 11:58:31</publishTime>
