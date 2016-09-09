@@ -20,5 +20,6 @@ namespace Training4.Models
         }
 
         public System.Data.Entity.DbSet<Training4.Models.Training> Trainings { get; set; }
+        public System.Data.Entity.DbSet<Training4.Models.Review> Reviews { get; set; }
     }
 }

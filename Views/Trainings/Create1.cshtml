@@ -84,7 +84,7 @@
                                         @{ string x = "Office (HP, HSP, DALTCP, SDP, OPPS, IO)";}
                                         @Html.LabelFor(model => model.Office, x, htmlAttributes: new { @class = " col-md-10" })
                                         <div class="col-md-10">
-                                            @Html.DropDownListFor(model => model.Office, new SelectList(new List<Object>{
+                                            @Html.DropDownListFor(model => model.Office, new SelectList(new List<Object>{"",
                 "HP", "HSP", "DALTCP","SDP","OPPS","IO"
                 }), new { @class = "form-control" })
                                             @Html.ValidationMessageFor(model => model.Office, "", new { @class = "text-danger" })
@@ -262,13 +262,13 @@
 			<div id="sidebar">
 
 				<!-- Logo -->
-					<h1 id="logo"><a href="~/Trainings/Index1">Training Reviews</a></h1>
+					<h1 id="logo"><a href="~/Trainings/Index">Training Reviews</a></h1>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
 							<li class="current"><a href="#">Write a Review</a></li>
-							<li><a href="~/Trainings/Index1">Browse Reviews</a></li>
+							<li><a href="~/Trainings/Index">Browse Reviews</a></li>
                            <!-- <li><a href="~/Trainings/Index2">Browse Reviews (Condensed)</a></li> -->
 						</ul>
 					</nav>
@@ -299,13 +299,13 @@
                 <section class="box">
                     <h2>Sort By:</h2>
                     <p>
-                        @Html.ActionLink("Rating", "Index1", new { sortOrder = ViewBag.StarSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" }) <br /><br />
-                        @Html.ActionLink("Date", "Index1", new { sortOrder = ViewBag.DateSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" }) <br /><br />
-                        @Html.ActionLink("Topic", "Index1", new { sortOrder = ViewBag.TopicSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" })
+                        @Html.ActionLink("Rating", "Index", new { sortOrder = ViewBag.StarSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" }) <br /><br />
+                        @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" }) <br /><br />
+                        @Html.ActionLink("Topic", "Index", new { sortOrder = ViewBag.TopicSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" })
                     </p>
                 </section>--> *@
 
-                <!-- Recent Posts -
+                <!-- Recent Posts -git 
         <section class="box recent-posts">
             <header>
                 <h2>Recent Posts</h2>

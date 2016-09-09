@@ -112,7 +112,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2016 11:24:26</publishTime>
     </File>
     <File Include="bin/Training4.dll">
-      <publishTime>07/15/2016 11:44:54</publishTime>
+      <publishTime>09/07/2016 13:49:49</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>02/05/2016 11:24:26</publishTime>
@@ -122,6 +122,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>02/05/2016 11:24:23</publishTime>
+    </File>
+    <File Include="Content/Howto/Main Menu.png">
+      <publishTime>09/02/2016 15:04:53</publishTime>
+    </File>
+    <File Include="Content/Howto/Navbar.png">
+      <publishTime>09/02/2016 15:05:53</publishTime>
+    </File>
+    <File Include="Content/Howto/Red Square.png">
+      <publishTime>09/02/2016 15:06:03</publishTime>
+    </File>
+    <File Include="Content/Howto/Search.png">
+      <publishTime>09/02/2016 15:04:42</publishTime>
+    </File>
+    <File Include="Content/Howto/Sort.png">
+      <publishTime>09/02/2016 15:05:05</publishTime>
     </File>
     <File Include="Content/Identity/assets/.sass-cache/12a6f86b5e4aa64fcb14102de616aea4d622c84f/ie8.scssc">
       <publishTime>04/25/2016 12:59:15</publishTime>
@@ -325,7 +340,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2016 13:29:16</publishTime>
     </File>
     <File Include="Content/striped/assets/css/main.css">
-      <publishTime>07/15/2016 11:36:40</publishTime>
+      <publishTime>07/21/2016 12:06:58</publishTime>
     </File>
     <File Include="Content/striped/assets/fonts/fontawesome-webfont.eot">
       <publishTime>04/26/2016 13:29:16</publishTime>
@@ -628,7 +643,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2016 11:24:20</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/12/2016 10:50:57</publishTime>
+      <publishTime>07/28/2016 16:54:37</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>02/05/2016 11:24:27</publishTime>
@@ -640,7 +655,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/02/2016 16:59:52</publishTime>
     </File>
     <File Include="Views/Trainings/Create1.cshtml">
-      <publishTime>07/15/2016 11:41:58</publishTime>
+      <publishTime>07/28/2016 16:54:49</publishTime>
     </File>
     <File Include="Views/Trainings/Delete.cshtml">
       <publishTime>02/05/2016 13:03:23</publishTime>
@@ -649,13 +664,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/22/2016 15:25:55</publishTime>
     </File>
     <File Include="Views/Trainings/Edit.cshtml">
-      <publishTime>02/12/2016 16:45:07</publishTime>
+      <publishTime>07/28/2016 16:32:29</publishTime>
+    </File>
+    <File Include="Views/Trainings/howto.cshtml">
+      <publishTime>09/02/2016 15:11:02</publishTime>
     </File>
     <File Include="Views/Trainings/Index.cshtml">
-      <publishTime>04/26/2016 17:02:45</publishTime>
+      <publishTime>09/02/2016 15:22:11</publishTime>
     </File>
     <File Include="Views/Trainings/Index1.cshtml">
-      <publishTime>07/15/2016 11:42:35</publishTime>
+      <publishTime>04/26/2016 17:02:45</publishTime>
     </File>
     <File Include="Views/Trainings/Index2.cshtml">
       <publishTime>06/10/2016 11:58:31</publishTime>

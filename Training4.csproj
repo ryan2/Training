@@ -185,6 +185,11 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Howto\Main Menu.png" />
+    <Content Include="Content\Howto\Navbar.png" />
+    <Content Include="Content\Howto\Red Square.png" />
+    <Content Include="Content\Howto\Search.png" />
+    <Content Include="Content\Howto\Sort.png" />
     <Content Include="Content\Identity\assets\css\font-awesome.min.css" />
     <Content Include="Content\Identity\assets\css\ie8.css" />
     <Content Include="Content\Identity\assets\css\ie9.css" />
@@ -352,10 +357,11 @@
     <Content Include="Views\Trainings\Delete.cshtml" />
     <Content Include="Views\Trainings\Details.cshtml" />
     <Content Include="Views\Trainings\Edit.cshtml" />
-    <Content Include="Views\Trainings\Index.cshtml" />
     <Content Include="Views\Trainings\Index1.cshtml" />
+    <Content Include="Views\Trainings\Index.cshtml" />
     <Content Include="Views\Trainings\Create1.cshtml" />
     <Content Include="Views\Trainings\Index2.cshtml" />
+    <Content Include="Views\Trainings\Howto.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

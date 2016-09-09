@@ -14,7 +14,7 @@ namespace Training4.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index1(string trainingRating, string searchString, string sortOrder, int? page)
+        public ActionResult Index(string trainingRating, string searchString, string sortOrder, int? page)
         {
             ViewBag.currentSort = sortOrder;
             var RatingList = new List<Decimal>(5) { 5, 4, 3, 2, 1 };
@@ -28,6 +28,8 @@ namespace Training4.Controllers
 
             var trainings = from t in db.Trainings
                             select t;
+            var reviews = from t in db.Reviews
+                          select t;
             if (!String.IsNullOrEmpty(searchString))
             {
                 trainings = trainings.Where(s => s.Course.Contains(searchString) || s.Topic.Contains(searchString) || s.Location.Contains(searchString));
@@ -107,8 +109,8 @@ namespace Training4.Controllers
             return View(trainings.ToList());
         }
 
-        // GET: Trainings
-        public ActionResult Index(string trainingRating, string searchString)
+        // GET: Index1
+        public ActionResult Index1(string trainingRating, string searchString)
         {
             var RatingList = new List<Decimal>(5) { 1, 2, 3, 4, 5 };
             var RatingQry = from d in db.Trainings
@@ -191,10 +193,14 @@ namespace Training4.Controllers
                 }
                 db.Trainings.Add(training);
                 db.SaveChanges();
-                return RedirectToAction("Index1");
+                return RedirectToAction("Index");
             }
 
             return View(training);
+        }
+        public ActionResult Howto()
+        {
+            return View();
         }
 
         // GET: Trainings/Edit/5
