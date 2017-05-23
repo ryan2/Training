@@ -25,11 +25,10 @@ namespace Training4.Controllers
             ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.TopicSort = sortOrder == "Topic" ? "topic_desc" : "Topic";
             ViewBag.page = page.HasValue ? page : 0;
-
+            ViewBag.reviews = from t in db.Reviews
+                                  select t;
             var trainings = from t in db.Trainings
                             select t;
-            var reviews = from t in db.Reviews
-                          select t;
             if (!String.IsNullOrEmpty(searchString))
             {
                 trainings = trainings.Where(s => s.Course.Contains(searchString) || s.Topic.Contains(searchString) || s.Location.Contains(searchString));
@@ -179,7 +178,38 @@ namespace Training4.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create1([Bind(Include = "ID,Office,Role,Date,Topic,Course,Format,Time,Url,Price,CEU,Contractor,Location,Instructor,Stars,Review,Recommend")] Training training)
+        public ActionResult Create1([Bind(Include = "ID,Office,Role,Date,Topic,Course,Format,Time,Url,Price,CEU,Contractor,Location,Instructor,Stars,WReview,Recommend")] Training training)
+        {
+            if (ModelState.IsValid)
+            {
+                if (training.Url.Contains("http://"))
+                {
+                    training.Url = training.Url.Substring(7);
+                }
+                else if (training.Url.Contains("https://"))
+                {
+                    training.Url = training.Url.Substring(8);
+                }
+                Review review = new Review();
+                review.R = training.WReview;
+                db.Trainings.Add(training);
+                db.SaveChanges();
+                review.Training_ID = training.ID;
+                db.Reviews.Add(review);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(training);
+        }
+        public ActionResult CreateSurvey()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateSurvey([Bind(Include = "ID,Office,Role,Date,Topic,Course,Format,Time,Url,Price,CEU,Contractor,Location,Instructor,Stars,WReview,Recommend")] Training training)
         {
             if (ModelState.IsValid)
             {
@@ -193,14 +223,67 @@ namespace Training4.Controllers
                 }
                 db.Trainings.Add(training);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                int id = training.ID;
+                return RedirectToAction("SurveyCreated",new { id = id });
             }
 
             return View(training);
         }
+        public ActionResult SurveyCreated(int? id)
+        {
+            ViewBag.ID = id;
+            return View();
+        }
         public ActionResult Howto()
         {
             return View();
+        }
+        public ActionResult Survey(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Training training = db.Trainings.Find(id);
+            if (training == null)
+            {
+                return HttpNotFound();
+            }
+            ModelState.Clear();
+            return View(training);
+        }
+
+        // POST: Trainings/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Survey([Bind(Include = "ID,Office,Role,Date,Topic,Course,Format,Time,Url,Price,CEU,Contractor,Location,Instructor,Stars,WReview,Recommend")] Training training)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(training).State = EntityState.Modified;
+                decimal temp = training.Stars;
+                decimal temp1=1;
+                foreach (Review x in db.Reviews)
+                {
+                    if (x.Training_ID == training.ID)
+                    {
+                        temp1++;
+                        temp += x.Stars;
+                    }
+                }
+                Review review = new Review();
+                review.Stars = training.Stars;
+                training.Stars = temp / temp1;
+                review.R = training.WReview;
+                training.WReview = null;
+                review.Training_ID = training.ID;
+                db.Reviews.Add(review);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(training);
         }
 
         // GET: Trainings/Edit/5

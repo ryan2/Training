@@ -28,7 +28,15 @@ namespace Training4.Models
         public string Location { get; set; }
         [Required]
         public decimal Stars { get; set; }
-        public string Review { get; set; }
+        public string WReview { get; set; }
         public Boolean Recommend { get; set; }
+    }
+    public class Review
+    {
+        public int ID { get; set; }
+        public string R { get; set;}
+        [Required]
+        public decimal Stars { get; set; }
+        public int Training_ID { get; set; }
     }
 }

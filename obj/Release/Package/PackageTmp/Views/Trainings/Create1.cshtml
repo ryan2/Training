@@ -217,11 +217,11 @@
                                     </div>
 
                                     <div class="form-group">
-                                        @{x = "Written Review (e.g., How did the training help you do your job better? What did you like about the training? What did you find the least informative or needed improvement (if anything))?";}
-                                        @Html.LabelFor(model => model.Review, x, htmlAttributes: new { @class = " col-md-10" })
+                                  @{x = "Written Review (e.g., How did the training help you do your job better? What did you like about the training? What did you find the least informative or needed improvement (if anything))?";}
+                                        @Html.LabelFor(model => model.WReview, x, htmlAttributes: new { @class = " col-md-10" })
                                         <div class="col-md-10">
-                                            @Html.TextAreaFor(model => model.Review, 10, 50, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Review, "", new { @class = "text-danger" })
+                                            @Html.TextAreaFor(model => model.WReview, 10, 50, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WReview, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
@@ -269,6 +269,8 @@
 						<ul>
 							<li class="current"><a href="#">Write a Review</a></li>
 							<li><a href="~/Trainings/Index">Browse Reviews</a></li>
+                            <li><a href="~/Trainings/CreateSurvey">Create Survey</a></li>
+                            <li><a href="~/Trainings/howto">How To</a></li>
                            <!-- <li><a href="~/Trainings/Index2">Browse Reviews (Condensed)</a></li> -->
 						</ul>
 					</nav>

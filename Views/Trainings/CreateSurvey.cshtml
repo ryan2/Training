@@ -1,0 +1,469 @@
+﻿<!DOCTYPE HTML>
+<!--@*
+    Striped by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license) *@
+-->
+<html>
+<head>
+    @model Training4.Models.Training
+    @{
+        Layout = null;
+        System.Globalization.DateTimeFormatInfo mfi = new System.Globalization.DateTimeFormatInfo();
+        @Styles.Render("~/Content/css");
+        @Scripts.Render("~/bundles/modernizr");
+        @Scripts.Render("~/bundles/jquery");
+        @Scripts.Render("~/bundles/bootstrap");
+        @Scripts.Render("~/bundles/jqueryval");
+        @Scripts.Render("~/bundles/jqueryui");
+        @Styles.Render("~/Content/themes/base/css");
+    }
+    <title>Training Reviews</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="~/Content/striped/assets/css/main.css" />
+    <link rel="shortcut icon" href="~/Content/Identity/images/favicon.ico" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <style>
+        .required:after {
+            content: "*";
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <script>
+            var $j = jQuery.noConflict();
+            $j(function () {
+                $j("#datepicker").datepicker();
+            });
+    </script>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="inner">
+
+            <!-- Post -->
+            <article class="box post post-excerpt">
+                <header>
+                    <!--
+                        Note: Titles and subtitles will wrap automatically when necessary, so don't worry
+                        if they get too long. You can also remove the <p> entirely if you don't
+                        need a subtitle.
+                    -->
+                    <h2>Create a Survey</h2>
+                    <p></p>
+                </header>
+                <!--<div class="info">
+                    <!--
+                        Note: The date should be formatted exactly as it's shown below. In particular, the
+                        "least significant" characters of the month should be encapsulated in a <span>
+                        element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
+                        Oh, and if you don't need a date for a particular page or post you can simply delete
+                        the entire "date" element.
+
+
+                    <span class="date"><span class="month">Apr<span>il</span></span> <span class="day">29</span><span class="year">, 2016</span></span>
+                    <!--
+                        Note: You can change the number of list items in "stats" to whatever you want.
+
+                    <ul class="stats">
+                        <li style="margin-top:0px; margin-bottom:0px" class="icon fa-star"></li>
+                    </ul>
+                </div>-->
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                        <div class="form-group">
+                            @{string x = "Date of Course";}
+                            @Html.LabelFor(model => model.Date, x, htmlAttributes: new { @class = " col-md-10 required" })
+                            <div class="input-group date col-md-10" id="">
+                                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @id = "datepicker" } })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Topic, htmlAttributes: new { @class = " col-md-10 required" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Topic, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Topic, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @{ x = "Course Name";}
+                            @Html.LabelFor(model => model.Course, x, htmlAttributes: new { @class = " col-md-10 required" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Course, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Course, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @{ x = "Format (i.e., classroom, online)";}
+                            @Html.LabelFor(model => model.Format, x, htmlAttributes: new { @class = " col-md-10" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.Format, new SelectList(new List<Object>{
+                "In-Person Classroom", "Webinar", "Phone","Other"
+                }), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Format, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @{ x = "Number of Days/Hours (ex: 3 days, 5 hours)";}
+                            @Html.LabelFor(model => model.Time, x, htmlAttributes: new { @class = " col-md-10" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @{ x = "Link To Enroll";}
+                            @Html.LabelFor(model => model.Url, x, htmlAttributes: new { @class = " col-md-10 required" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @{ x = "Cost (Enter a number)";}
+                            @Html.LabelFor(model => model.Price, x, htmlAttributes: new { @class = " col-md-10" })
+                            <div class="input-group col-md-10">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-usd"></span>
+                                </span>
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @{ x = "Continuing Education Units (Enter a number)";}
+                            @Html.LabelFor(model => model.CEU, x, htmlAttributes: new { @class = " col-md-10" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CEU, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CEU, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Contractor, htmlAttributes: new { @class = " col-md-10" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Contractor, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Contractor, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Instructor, htmlAttributes: new { @class = " col-md-10" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Instructor, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Instructor, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @{ x = "Location (City, State)";}
+                            @Html.LabelFor(model => model.Location, x, htmlAttributes: new { @class = " col-md-10 required" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input type="submit" value="Post" class="btn btn-lg" />
+                            </div>
+                        </div>
+                    </div>
+                                }
+
+                <!--<a href="#" class="image featured"><img src="~/Content/striped/images/pic01.jpg" alt="" /></a>-->
+                <p>
+                </p>
+            </article>
+
+
+            <!-- Pagination
+                <div class="pagination">
+                    <!--<a href="#" class="button previous">Previous Page</a>
+                    <div class="pages">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <span>&hellip;</span>
+                        <a href="#">20</a>
+                    </div>
+                    <a href="#" class="button next">Next Page</a>
+                </div>-->
+
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+
+        <!-- Logo -->
+        <h1 id="logo"><a href="~/Trainings/Index">Training Reviews</a></h1>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="~/Trainings/Create1">Write a Review</a></li>
+                <li><a href="~/Trainings/Index">Browse Reviews</a></li>
+                <li class="current"><a href="#">Create Survey</a></li>
+                <li><a href="~/Trainings/howto">How To</a></li>
+                <!-- <li><a href="~/Trainings/Index2">Browse Reviews (Condensed)</a></li> -->
+            </ul>
+        </nav>
+
+        <!-- Text -->
+        <section class="box text-style1">
+            <div class="inner">
+                <p>
+                    After filling out this form, you will be given a URL that you can distribute to people who attended the training.
+                </p>
+            </div>
+        </section>
+
+        @*  <!-- Search
+            <section class="box">
+                <h2>Search</h2>
+                @using (Html.BeginForm())
+                {
+                    <p>
+                        Rating: @Html.DropDownList("trainingRating", "All")
+                        Topic or Course: @Html.TextBox("SearchString", (string)ViewBag.search)<br />
+                        <input type="submit" value="Search" class="btn" />
+                    </p>
+                }
+            </section>
+
+            <!--Sorting
+            <section class="box">
+                <h2>Sort By:</h2>
+                <p>
+                    @Html.ActionLink("Rating", "Index", new { sortOrder = ViewBag.StarSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" }) <br /><br />
+                    @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" }) <br /><br />
+                    @Html.ActionLink("Topic", "Index", new { sortOrder = ViewBag.TopicSort, searchString = ViewBag.search, trainingRating = ViewBag.rating }, htmlAttributes: new { @class = "button" })
+                </p>
+            </section>--> *@
+
+        <!-- Recent Posts -git
+        <section class="box recent-posts">
+            <header>
+                <h2>Recent Posts</h2>
+            </header>
+            <ul>
+                <li><a href="#">Lorem ipsum dolor</a></li>
+                <li><a href="#">Feugiat nisl aliquam</a></li>
+                <li><a href="#">Sed dolore magna</a></li>
+                <li><a href="#">Malesuada commodo</a></li>
+                <li><a href="#">Ipsum metus nullam</a></li>
+            </ul>
+        </section> -->
+        <!-- Recent Comments
+        <section class="box recent-comments">
+            <header>
+                <h2>Recent Comments</h2>
+            </header>
+            <ul>
+                <li>case on <a href="#">Lorem ipsum dolor</a></li>
+                <li>molly on <a href="#">Sed dolore magna</a></li>
+                <li>case on <a href="#">Sed dolore magna</a></li>
+            </ul>
+        </section> -->
+        <!-- Calendar -->
+        <section class="box calendar">
+            <div class="inner">
+                <table>
+                    @{ string m = mfi.GetMonthName(DateTime.Today.Month);
+                        string y = DateTime.Today.Year.ToString();
+                        string z = m + " " + y;
+                        int daysinmonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
+                        DateTime first = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+                        DateTime last = new DateTime(DateTime.Today.Year, DateTime.Today.Month, daysinmonth);
+                        int lastday = (int)(last.DayOfWeek + 6) % 7;
+                        int firstday = (int)(first.DayOfWeek + 6) % 7;
+                        int weeks = 5;
+                        if (((daysinmonth == 30 || daysinmonth == 31) && firstday == 6) || (daysinmonth == 31 && firstday == 5))
+                        {
+                            weeks = 6;
+                        }
+                        int skipfirst = firstday;
+                        int skiplast = 6 - lastday;
+                        int daycount = 1;
+                        int k = 0;
+                        int today = DateTime.Today.Day;
+                    }
+                    <caption>@z</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" title="Monday">M</th>
+                            <th scope="col" title="Tuesday">Tu</th>
+                            <th scope="col" title="Wednesday">W</th>
+                            <th scope="col" title="Thursday">T</th>
+                            <th scope="col" title="Friday">F</th>
+                            <th scope="col" title="Saturday">S</th>
+                            <th scope="col" title="Sunday">Su</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @while (skipfirst > 0)
+                            {
+                                <td><span>&nbsp;</span></td>
+                                skipfirst--;
+                            }
+                            @while (firstday < 7)
+                            {
+                                if (today == daycount)
+                                {
+                                    <td class="today"><a>@daycount</a></td>
+                                    daycount++;
+                                    firstday++;
+                                    continue;
+                                }
+                                <td><span>@daycount</span></td>
+                                daycount++;
+                                firstday++;
+                            }
+                        </tr>
+                        <tr>
+                            @while (k++ < 7)
+                            {
+                                if (today == daycount)
+                                {
+                                    <td class="today"><a>@daycount</a></td>
+                                    daycount++;
+                                    continue;
+                                }
+                                <td><span>@daycount</span></td>
+                                daycount++;
+                            }
+                        </tr>
+                        <tr>
+                            @{k = 0; }
+                            @while (k++ < 7)
+                            {
+                                if (today == daycount)
+                                {
+                                    <td class="today"><a>@daycount</a></td>
+                                    daycount++;
+                                    continue;
+                                }
+                                <td><span>@daycount</span></td>
+                                daycount++;
+                            }
+                        </tr>
+                        <tr>
+                            @{k = 0; }
+                            @while (k++ < 7)
+                            {
+                                if (today == daycount)
+                                {
+                                    <td class="today"><a>@daycount</a></td>
+                                    daycount++;
+                                    continue;
+                                }
+                                <td><span>@daycount</span></td>
+                                daycount++;
+                            }
+                        </tr>
+                        <tr>
+                            @if (weeks == 6)
+                            {
+                                k = 0;
+                                while (k++ < 7)
+                                {
+                                    if (today == daycount)
+                                    {
+                                        <td class="today"><a>@daycount</a></td>
+                                        daycount++;
+                                        continue;
+                                    }
+                                    <td><span>@daycount</span></td>
+                                    daycount++;
+                                }
+                            }
+                            else
+                            {
+                                while (daycount <= daysinmonth)
+                                {
+                                    if (today == daycount)
+                                    {
+                                        <td class="today"><a>@daycount</a></td>
+                                        daycount++;
+                                        continue;
+                                    }
+                                    <td><span>@daycount</span></td>
+                                    daycount++;
+                                }
+                                while (skiplast > 0)
+                                {
+                                    <td><span>&nbsp;</span></td>
+                                    skiplast--;
+                                }
+                            }
+
+                        </tr>
+                        @if (weeks == 6)
+                        {
+                            <tr>
+                                @while (daycount <= daysinmonth)
+                                {
+                                    if (today == daycount)
+                                    {
+                                        <td class="today"><a>@daycount</a></td>
+                                        daycount++;
+                                        continue;
+                                    }
+                                    <td><span>@daycount</span></td>
+                                    daycount++;
+                                }
+                                @while (skiplast > 0)
+                                {
+                                    <td><span>&nbsp;</span></td>
+                                    skiplast--;
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+
+        <!-- Copyright -->
+        <ul id="copyright">
+            <li><a href="http://158.74.49.6/aspeintranet">ASPE Intranet</a></li><!--<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
+        </ul>
+
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/Content/striped/assets/js/jquery.min.js"></script>
+    <script src="~/Content/striped/assets/js/skel.min.js"></script>
+    <script src="~/Content/striped/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="~/Content/striped/assets/js/main.js"></script>
+</body>
+</html>

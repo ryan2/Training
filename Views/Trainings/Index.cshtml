@@ -115,7 +115,16 @@
                                 <p class="stats">Instructor: @item.Instructor</p><br />
                                 <!--<div class="tog" style="border: 1px solid black;overflow:auto;display:inline-block;border-radius:8px;padding:2px 2px 2px 2px;"><p style="padding-right:0.5em;margin-bottom:0px;float:left;">More Details</p><i style="margin-top:0px; margin-bottom:0px;float:left;" class="icon fa-caret-square-o-down"></i></div>-->
                                 <i style="padding-top:10px; margin-bottom:0px;cursor:pointer;" class="icon fa-plus-square fa-2x tog"></i>
-                                <p class="test" style="border: 1px solid black;border-radius:5px;padding-left:5px;"><b>Comments:</b> @item.Review</p>
+                                <p class="test" style="border: 1px solid black;border-radius:5px;padding-left:5px;"><b>Comments:</b><br /> 
+                                @{ foreach (Training4.Models.Review r in ViewBag.reviews)
+                                    {
+                                        if (r.Training_ID == item.ID)
+                                        {
+                                        @r.R<br>
+                                            }
+                                        }
+                                    }
+                                </p>
 							</div>
 							<!--<a href="#" class="image featured"><img src="~/Content/striped/images/pic01.jpg" alt="" /></a>-->
 						</article>
@@ -159,6 +168,7 @@
 						<ul>
 							<li><a href="~/Trainings/Create1">Write a Review</a></li>                            
 							<li class="current"><a href="#">Browse Reviews</a></li>
+                            <li><a href="~/Trainings/CreateSurvey">Create Survey</a></li>
                             <li><a href="~/Trainings/howto">How To</a></li>
                            <!-- <li><a href="~/Trainings/Index2">Browse Reviews (Condensed)</a></li> -->
 						</ul>
