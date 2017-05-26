@@ -249,6 +249,10 @@ namespace Training4.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Topic = training.Topic;
+            ViewBag.Course = training.Course;
+            ViewBag.Instructor = training.Instructor;
+            ViewBag.Date = training.Date.ToShortDateString();
             ModelState.Clear();
             return View(training);
         }

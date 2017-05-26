@@ -76,7 +76,8 @@
         @Html.HiddenFor(model => model.Location)
         @Html.HiddenFor(model => model.Recommend)
         @Html.HiddenFor(model => model.Instructor)
-
+        <br />
+        <h3>Topic: @ViewBag.Topic | Course Name: @ViewBag.Course | Instructor: @ViewBag.Instructor | Date: @ViewBag.Date</h3><br />
         <div class="form-group">
             @Html.LabelFor(model => model.Office, htmlAttributes: new { @class = " col-md-10" })
             <div class="col-md-10">

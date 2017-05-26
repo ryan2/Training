@@ -112,7 +112,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/22/2017 12:17:44</publishTime>
     </File>
     <File Include="bin/Training4.dll">
-      <publishTime>05/23/2017 16:23:56</publishTime>
+      <publishTime>05/25/2017 15:34:00</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>05/22/2017 12:17:44</publishTime>
@@ -658,10 +658,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/22/2017 12:19:31</publishTime>
     </File>
     <File Include="Views/Trainings/Create1.cshtml">
-      <publishTime>05/23/2017 13:26:12</publishTime>
+      <publishTime>05/25/2017 15:17:03</publishTime>
     </File>
     <File Include="Views/Trainings/CreateSurvey.cshtml">
-      <publishTime>05/23/2017 13:29:25</publishTime>
+      <publishTime>05/25/2017 15:17:40</publishTime>
     </File>
     <File Include="Views/Trainings/Delete.cshtml">
       <publishTime>05/22/2017 12:17:43</publishTime>
@@ -676,7 +676,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/23/2017 13:29:08</publishTime>
     </File>
     <File Include="Views/Trainings/Index.cshtml">
-      <publishTime>05/23/2017 13:26:52</publishTime>
+      <publishTime>05/25/2017 15:03:41</publishTime>
     </File>
     <File Include="Views/Trainings/Index1.cshtml">
       <publishTime>05/22/2017 12:19:31</publishTime>
@@ -685,7 +685,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/22/2017 12:19:31</publishTime>
     </File>
     <File Include="Views/Trainings/Survey.cshtml">
-      <publishTime>05/23/2017 10:45:58</publishTime>
+      <publishTime>05/25/2017 15:32:57</publishTime>
     </File>
     <File Include="Views/Trainings/SurveyCreated.cshtml">
       <publishTime>05/23/2017 12:03:54</publishTime>
@@ -697,7 +697,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/22/2017 12:17:43</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/23/2017 16:23:59</publishTime>
+      <publishTime>05/25/2017 15:34:06</publishTime>
     </File>
   </ItemGroup>
 </Project>
